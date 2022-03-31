@@ -35,7 +35,7 @@ function GroupCell<R, SR>({
   }
 
   // Only make the cell clickable if the group level matches
-  const isLevelMatching = column.rowGroup && groupColumnIndex === column.idx;
+  const isLevelMatching = column.rowGroup && groupColumnIndex === column.idx && childRows.length > 1;
 
   return (
     <div
