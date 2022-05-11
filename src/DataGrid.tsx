@@ -1083,6 +1083,7 @@ function DataGrid<R, SR, K extends Key>(
           onRowClick={onRowClick}
           onRowDoubleClick={onRowDoubleClick}
           rowClass={rowClass}
+          isChildRow={hasGroups}
           gridRowStart={gridRowStart}
           height={getRowHeight(rowIdx)}
           copiedCellIdx={

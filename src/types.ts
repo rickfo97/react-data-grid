@@ -143,6 +143,7 @@ export interface RowRendererProps<TRow, TSummaryRow = unknown>
   onRowDoubleClick: Maybe<(row: TRow, column: CalculatedColumn<TRow, TSummaryRow>) => void>;
   rowClass: Maybe<(row: TRow) => Maybe<string>>;
   setDraggedOverRowIdx: ((overRowIdx: number) => void) | undefined;
+  isChildRow: boolean | undefined;
   selectCell: (
     row: TRow,
     column: CalculatedColumn<TRow, TSummaryRow>,

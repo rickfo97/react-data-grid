@@ -30,6 +30,7 @@ function Row<R, SR>(
     onMouseEnter,
     onRowChange,
     selectCell,
+    isChildRow,
     ...props
   }: RowRendererProps<R, SR>,
   ref: React.Ref<HTMLDivElement>
@@ -46,6 +47,7 @@ function Row<R, SR>(
   className = clsx(
     rowClassname,
     `rdg-row-${rowIdx % 2 === 0 ? 'even' : 'odd'}`,
+    isChildRow ? "rdg-child-row" : "",
     {
       [rowSelectedClassname]: selectedCellIdx === -1
     },

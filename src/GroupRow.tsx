@@ -72,7 +72,7 @@ function GroupedRow<R, SR>({
         className={clsx(
           rowClassname,
           groupRowClassname,
-          childRows.length > 1 ? 'rdg-group-row-children' : '',
+          childRows.length > 1 ? 'rdg-group-row-has-children' : '',
           `rdg-row-${rowIdx % 2 === 0 ? 'even' : 'odd'}`,
           {
             [rowSelectedClassname]: selectedCellIdx === -1
