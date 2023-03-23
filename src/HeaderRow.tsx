@@ -15,9 +15,7 @@ type SharedDataGridProps<R, SR, K extends React.Key> = Pick<
 
 export interface HeaderRowProps<R, SR, K extends React.Key> extends SharedDataGridProps<R, SR, K> {
   columns: readonly CalculatedColumn<R, SR>[];
-  allRowsSelected: boolean;
-  onAllRowsSelectionChange: (checked: boolean) => void;
-  onColumnResize: (column: CalculatedColumn<R, SR>, width: number | 'auto') => void;
+  onColumnResize: (column: CalculatedColumn<R, SR>, width: number | 'max-content') => void;
   selectCell: (columnIdx: number) => void;
   lastFrozenColumnIndex: number;
   selectedCellIdx: number | undefined;
@@ -26,20 +24,22 @@ export interface HeaderRowProps<R, SR, K extends React.Key> extends SharedDataGr
 }
 
 const headerRow = css`
-  display: contents;
-  line-height: var(--rdg-header-row-height);
-  background-color: var(--rdg-header-background-color);
-  font-weight: bold;
+  @layer rdg.HeaderRow {
+    display: contents;
+    line-height: var(--rdg-header-row-height);
+    background-color: var(--rdg-header-background-color);
+    font-weight: bold;
 
-  > .${cell} {
-    /* Should have a higher value than 1 to show up above frozen cells */
-    z-index: 2;
-    position: sticky;
-    inset-block-start: 0;
-  }
+    & > .${cell} {
+      /* Should have a higher value than 0 to show up above regular cells */
+      z-index: 1;
+      position: sticky;
+      inset-block-start: 0;
+    }
 
-  > .${cellFrozen} {
-    z-index: 3;
+    & > .${cellFrozen} {
+      z-index: 2;
+    }
   }
 `;
 
@@ -47,8 +47,6 @@ const headerRowClassname = `rdg-header-row ${headerRow}`;
 
 function HeaderRow<R, SR, K extends React.Key>({
   columns,
-  allRowsSelected,
-  onAllRowsSelectionChange,
   onColumnResize,
   sortColumns,
   onSortColumnsChange,
@@ -73,8 +71,6 @@ function HeaderRow<R, SR, K extends React.Key>({
         colSpan={colSpan}
         isCellSelected={selectedCellIdx === column.idx}
         onColumnResize={onColumnResize}
-        allRowsSelected={allRowsSelected}
-        onAllRowsSelectionChange={onAllRowsSelectionChange}
         onSortColumnsChange={onSortColumnsChange}
         sortColumns={sortColumns}
         selectCell={selectCell}
