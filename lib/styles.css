@@ -312,21 +312,21 @@
   }
 
 
-@layer rdg.Cell {.ccpfvsn7-0-0-beta-27 {
-    background-color: #ccccff
+@layer rdg . Cell {.ccpfvsn7-0-0-beta-27 {
+  background-color: #ccccff
 }
-  }
+}
 
-@layer rdg.Cell {
+@layer rdg . Cell {
 
 .c1bmg16t7-0-0-beta-27 {
-    background-color: #ccccff
+  background-color: #ccccff
 }
 
-    .c1bmg16t7-0-0-beta-27.ccpfvsn7-0-0-beta-27 {
-      background-color: #9999ff;
-    }
+  .c1bmg16t7-0-0-beta-27.ccpfvsn7-0-0-beta-27 {
+    background-color: #9999ff;
   }
+}
 
 
 @layer rdg.GroupedRow {
